@@ -18,12 +18,36 @@ class UserRoles:
 
 
 class User(AbstractBaseUser):
-    first_name = models.CharField(max_length=15, null=True, blank=True)
-    last_name = models.CharField(max_length=25, null=True, blank=True)
-    phone = models.CharField(max_length=12, validators=[MinValueValidator(limit_value=11, message='Invalid phone number')])
-    email = models.EmailField(unique=True)
-    role = models.CharField(choices=UserRoles.choices, default='user', max_length=13)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'role']
+
+    first_name = models.CharField(
+        max_length=15,
+        verbose_name='Имя',
+        help_text='Введите ваше имя, макс 15 символов'
+    )
+    last_name = models.CharField(
+        max_length=25,
+        verbose_name='Фамилия',
+        help_text='Введите вашу фамилию, макс 15 символов'
+    )
+    phone = PhoneNumberField()
+    email = models.EmailField('email address', unique=True, help_text='Введите вашу электронную почту')
+    role = models.CharField(
+        choices=UserRoles.choices,
+        default=UserRoles.USER,
+        max_length=13,
+        verbose_name='Роль пользователя',
+        help_text='Выберите роль'
+    )
+    image = models.ImageField(
+        upload_to='images/',
+        null=True,
+        blank=True,
+        verbose_name='',
+        help_text='Загрузите изображение'
+    )
 
     class Meta:
         verbose_name = 'Пользователь'
