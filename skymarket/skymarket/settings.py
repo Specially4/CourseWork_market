@@ -38,7 +38,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
-    'djoser',
+    "djoser",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -81,15 +81,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
-# TODO здесь мы настраиваем аутентификацию и пагинацию
+# здесь мы настраиваем аутентификацию и пагинацию
 REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 5,
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
-# TODO здесь мы настраиваем Djoser
+# здесь мы настраиваем Djoser
 DJOSER = {
-    'SERIALIZERS': {
-        'user_create': 'users.serializers.UserRegistrationSerializer'
+    "SERIALIZERS": {
+        "user_create": "users.serializers.UserRegistrationSerializer"
     },
-    'LOGIN_FIELD': 'email'
+    "LOGIN_FIELD": "email"
 }
 
 # Database
@@ -97,13 +102,13 @@ DJOSER = {
 
 # TODO здесь необходимо настроить подключение к БД
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hw_27',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "skymarket",
+        "USER": "skymarket",
+        "PASSWORD": "skymarket",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from skymarket.users.models import User
+from users.models import User
 
 
 class Ad(models.Model):
