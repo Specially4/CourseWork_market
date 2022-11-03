@@ -23,14 +23,14 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     first_name = models.CharField(
-        max_length=25,
+        max_length=64,
         verbose_name='Имя',
-        help_text='Введите ваше имя, макс 25 символов'
+        help_text='Введите ваше имя, макс 64 символов'
     )
     last_name = models.CharField(
-        max_length=25,
+        max_length=64,
         verbose_name='Фамилия',
-        help_text='Введите вашу фамилию, макс 25 символов'
+        help_text='Введите вашу фамилию, макс 64 символов'
     )
     phone = PhoneNumberField()
     email = models.EmailField(verbose_name='email address', unique=True, help_text='Введите вашу электронную почту')

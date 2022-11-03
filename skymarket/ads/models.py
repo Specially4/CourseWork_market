@@ -29,7 +29,3 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
-
-    @property
-    def email(self):
-        return self.author.email if self.author else None

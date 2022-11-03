@@ -38,12 +38,13 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
-    "djoser",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "djoser",
+    "phonenumber_field"
     "users",
     "ads",
     "redoc",
@@ -102,14 +103,14 @@ DJOSER = {
 
 # TODO здесь необходимо настроить подключение к БД
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "skymarket",
-        "USER": "skymarket",
-        "PASSWORD": "skymarket",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "skymarket",
+    #     "USER": "skymarket",
+    #     "PASSWORD": "skymarket",
+    #     "HOST": "localhost",
+    #     "PORT": "5432",
+    # }
 }
 
 
