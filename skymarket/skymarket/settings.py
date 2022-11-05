@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "djoser",
-    "phonenumber_field"
+    "phonenumber_field",
     "users",
     "ads",
     "redoc",
+    'django_filters',
 ]
 
 
@@ -90,6 +91,8 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
+
+AUTH_USER_MODEL = 'users.User'
 # здесь мы настраиваем Djoser
 DJOSER = {
     "SERIALIZERS": {
@@ -103,14 +106,14 @@ DJOSER = {
 
 # TODO здесь необходимо настроить подключение к БД
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "skymarket",
-    #     "USER": "skymarket",
-    #     "PASSWORD": "skymarket",
-    #     "HOST": "localhost",
-    #     "PORT": "5432",
-    # }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "skymarket",
+        "USER": "skymarket",
+        "PASSWORD": "skymarket",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
 }
 
 

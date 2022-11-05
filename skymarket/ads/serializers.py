@@ -7,8 +7,7 @@ from ads.models import Comment, Ad
 class CommentSerializer(serializers.ModelSerializer):
     author_first_name = serializers.ReadOnlyField(source='author.first_name')
     author_last_name = serializers.ReadOnlyField(source='author.last_name')
-    phone = serializers.ReadOnlyField(source='author.phone')
-    author_image = serializers.ReadOnlyField(source='author.image')
+    author_image = serializers.ImageField(source='author.image', read_only=True)
     author_id = serializers.ReadOnlyField(source='author.id')
     ad_id = serializers.ReadOnlyField(source='ad.id')
 

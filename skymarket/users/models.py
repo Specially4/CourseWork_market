@@ -36,7 +36,6 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email address', unique=True, help_text='Введите вашу электронную почту')
     role = models.CharField(
         choices=UserRoles.choices,
-        default=UserRoles.USER,
         max_length=13,
         verbose_name='Роль пользователя',
         help_text='Выберите роль'
@@ -48,6 +47,7 @@ class User(AbstractBaseUser):
         verbose_name='',
         help_text='Загрузите изображение'
     )
+    is_active = models.BooleanField(default=False)
 
     @property
     def is_admin(self):
@@ -63,3 +63,13 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_modul_perm(self, app):
+        return self.is_admin
