@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from ads.models import Ad, Comment
 from ads.permissions import IsOwner, IsAdmin
 from ads.serializers import AdSerializer, AdDetailSerializer, CommentSerializer
+from skymarket.ads.filter import AdFilter
 
 
 class AdPagination(pagination.PageNumberPagination):
@@ -20,6 +21,7 @@ class AdViewSet(viewsets.ModelViewSet):
     pagination_class = AdPagination
     permission_classes = (AllowAny,)
     filter_backends = (DjangoFilterBackend,)
+    filterset_class = AdFilter
 
     def perform_create(self, serializer):
         user = self.request.user
